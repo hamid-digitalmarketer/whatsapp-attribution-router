@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketing Agency Landing Page — WhatsApp Lead Attribution</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; background: #f8fafc; color: #1e293b; }
+    .hero { max-width: 800px; margin: 80px auto; padding: 40px; background: #fff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); text-align: center; }
+    h1 { font-size: 32px; color: #0f172a; margin-bottom: 16px; }
+    p { font-size: 18px; color: #64748b; line-height: 1.6; margin-bottom: 32px; }
+    .btn-wa { display: inline-flex; align-items: center; gap: 8px; background: #25D366; color: #fff; text-decoration: none; font-weight: 700; font-size: 18px; padding: 16px 32px; border-radius: 8px; transition: 0.2s; }
+    .btn-wa:hover { background: #1ebd5a; transform: translateY(-2px); }
+    .debug-box { margin-top: 40px; text-align: left; background: #0f172a; color: #38bdf8; padding: 20px; border-radius: 8px; font-family: monospace; font-size: 13px; }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <h1>Scale Your Paid Media with Verified Tracking</h1>
+    <p>We build automated server-side attribution systems that connect ad spend with real WhatsApp conversations and CRM deals.</p>
+
+    <a href="#" data-wa-button id="hero-cta" class="btn-wa">
+      Chat with an Attribution Specialist on WhatsApp
+    </a>
+
+    <div class="debug-box">
+      <strong>Active Attribution State:</strong>
+      <pre id="attr-debug">Loading attribution...</pre>
+    </div>
+  </div>
+
+  <script src="../src/attribution-router.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const router = new WhatsAppAttributionRouter({
+        phoneNumber: '923167417135',
+        storageType: 'sessionStorage',
+        attributionModel: 'last_touch',
+        defaultMessage: 'Hi Hamid, I reviewed your marketing agency landing page and would like to discuss conversion tracking.'
+      }).init();
+
+      // Display active attribution data in debug window
+      const attr = router.getAttribution();
+      document.getElementById('attr-debug').textContent = JSON.stringify(attr, null, 2);
+    });
+  </script>
+</body>
+</html>

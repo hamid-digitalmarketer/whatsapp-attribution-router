@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatsApp Attribution Router — Turn WhatsApp Clicks into Trackable Leads</title>
+  <meta name="description" content="Open-source JavaScript and Python toolkit that captures UTM campaign parameters, generates attributed WhatsApp click-to-chat links, and syncs lead events with Google Sheets and GoHighLevel CRM.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="logo-wrap">
+        <span class="logo-badge">WAR</span>
+        <span class="logo-text">WhatsApp Attribution Router</span>
+      </a>
+      <div class="nav-actions">
+        <a href="https://github.com/hamid-digitalmarketer/whatsapp-attribution-router" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">GitHub</a>
+        <a href="https://wa.me/923167417135?text=Hello%20Hamid%2C%20I%20viewed%20WhatsApp%20Attribution%20Router%20and%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="btn btn-primary">Contact on WhatsApp</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <span class="eyebrow">Open-Source MarTech Toolkit</span>
+        <h1 class="hero-title">Turn WhatsApp Clicks into Trackable,<br>Campaign-Attributed Leads</h1>
+        <p class="hero-subtitle">
+          Connect landing-page visits, UTM campaign data, WhatsApp click-to-chat links, and downstream lead tracking. Know exactly which Meta Ads, Google Ads, or organic campaigns generate your incoming chats.
+        </p>
+      </div>
+    </section>
+
+    <!-- Interactive Simulator -->
+    <section class="container">
+      <div class="simulator-card">
+        <div class="sim-grid">
+          
+          <!-- Column 1: Configuration & Inputs -->
+          <div class="sim-col">
+            <h3>1. Campaign Visit Simulation</h3>
+            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">
+              Select a quick campaign preset or customize URL parameters below:
+            </p>
+            <div class="preset-pills">
+              <button class="preset-btn active" data-preset="google_ads">Google Search Ads</button>
+              <button class="preset-btn" data-preset="meta_ads">Meta Retargeting</button>
+              <button class="preset-btn" data-preset="tiktok_influencer">TikTok Influencer</button>
+              <button class="preset-btn" data-preset="direct">Direct / Organic</button>
+            </div>
+
+            <div class="input-row">
+              <div class="form-group">
+                <label for="in-source">utm_source</label>
+                <input type="text" id="in-source" class="form-input" value="google">
+              </div>
+              <div class="form-group">
+                <label for="in-medium">utm_medium</label>
+                <input type="text" id="in-medium" class="form-input" value="cpc">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="in-campaign">utm_campaign</label>
+              <input type="text" id="in-campaign" class="form-input" value="lahore_property_leads">
+            </div>
+
+            <div class="input-row">
+              <div class="form-group">
+                <label for="in-content">utm_content</label>
+                <input type="text" id="in-content" class="form-input" value="search_ad_v2">
+              </div>
+              <div class="form-group">
+                <label for="in-term">utm_term</label>
+                <input type="text" id="in-term" class="form-input" value="luxury apartments lahore">
+              </div>
+            </div>
+
+            <div class="input-row" style="margin-top: 14px;">
+              <div class="form-group">
+                <label for="in-model">Attribution Model</label>
+                <select id="in-model" class="form-select">
+                  <option value="last_touch" selected>Last Touch (Default)</option>
+                  <option value="first_touch">First Touch</option>
+                  <option value="both">Both (Multi-Touch Record)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="in-storage">Browser Storage</label>
+                <select id="in-storage" class="form-select">
+                  <option value="sessionStorage" selected>sessionStorage (Session only)</option>
+                  <option value="localStorage">localStorage (Cross-tab)</option>
+                  <option value="none">Memory Only (No Persistence)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="in-phone">WhatsApp Business Number</label>
+              <input type="text" id="in-phone" class="form-input" value="+92 316 7417135">
+            </div>
+
+            <div class="form-group">
+              <label for="in-message">Base Inquiry Message</label>
+              <input type="text" id="in-message" class="form-input" value="Hi, I'm interested in your services.">
+            </div>
+          </div>
+
+          <!-- Column 2: Live Generated Output & Previews -->
+          <div class="sim-col">
+            <h3>2. Generated WhatsApp Link & Message</h3>
+            
+            <div class="preview-box">
+              <div class="preview-label">Generated WhatsApp Prefilled Text</div>
+              <div class="code-snippet" id="preview-msg">Hi, I'm interested in your services.&#10;&#10;Campaign ref: lahore_property_leads&#10;Source: google&#10;Medium: cpc&#10;Ref: lead_sim_xyz</div>
+            </div>
+
+            <div class="preview-box">
+              <div class="preview-label">Official WhatsApp Click-to-Chat URL</div>
+              <div class="code-snippet" id="preview-url">https://wa.me/923167417135?text=...</div>
+            </div>
+
+            <div style="display: flex; gap: 12px; margin-bottom: 24px;">
+              <button id="btn-simulate-click" class="btn btn-primary" style="flex: 1; justify-content: center;">
+                Simulate WhatsApp Click
+              </button>
+              <a id="btn-open-real" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="flex: 1; justify-content: center;">
+                Open Real WhatsApp
+              </a>
+            </div>
+
+            <!-- Tabbed Integration Inspector -->
+            <div class="preview-box">
+              <div class="tabs-header">
+                <button class="tab-btn active" data-tab="payload">Attribution Event JSON</button>
+                <button class="tab-btn" data-tab="sheets">Google Sheets Row</button>
+                <button class="tab-btn" data-tab="ghl">GoHighLevel Contact</button>
+              </div>
+
+              <div id="tab-payload" class="tab-content active">
+                <div class="code-snippet" id="preview-payload">Loading event...</div>
+              </div>
+
+              <div id="tab-sheets" class="tab-content">
+                <div class="code-snippet" id="preview-sheets">Loading spreadsheet row...</div>
+              </div>
+
+              <div id="tab-ghl" class="tab-content">
+                <div class="code-snippet" id="preview-ghl">Loading GHL payload...</div>
+              </div>
+            </div>
+            <p style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">
+              * Note: Simulated integration views demonstrate downstream data formatting. No live external API keys are required for the browser demo.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture & Technical Honesty -->
+    <section class="container" style="margin-bottom: 60px;">
+      <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 36px;">
+        <h2 style="font-size: 24px; margin-bottom: 16px;">Attribution Accuracy & Technical Reality</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 16px;">
+          This toolkit is designed with strict technical honesty:
+        </p>
+        <ul style="color: var(--text-secondary); padding-left: 20px; line-height: 1.8;">
+          <li><strong>A click is NOT a conversation:</strong> When someone clicks a WhatsApp button, the browser opens WhatsApp with prefilled text. The user can choose to edit or discard that text before sending. A button click is recorded as an <code>unconfirmed_click</code>, not a closed sale.</li>
+          <li><strong>First-touch vs. Last-touch:</strong> By default, the library preserves first-touch campaign parameters so multi-visit journeys don't lose initial discovery context, while recording the latest campaign touchpoint separately.</li>
+          <li><strong>Privacy First:</strong> Zero fingerprinting, zero cross-site trackers, and zero personal information in local browser storage. Completely configurable storage modes (<code>sessionStorage</code>, <code>localStorage</code>, or memory-only).</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Client Acquisition Band -->
+    <section class="container">
+      <div class="cta-band">
+        <h2>Need Better WhatsApp Lead Attribution?</h2>
+        <p>
+          Running Google Ads or Meta Ads that generate WhatsApp inquiries, but struggling to identify which campaigns bring in your highest-converting leads? I help performance marketing agencies, real estate firms, and e-commerce brands implement end-to-end attribution workflows connecting ad spend to actual closed revenue.
+        </p>
+        <a href="https://wa.me/923167417135?text=Hello%20Hamid%2C%20I%20am%20interested%20in%20setting%20up%20WhatsApp%20lead%20attribution%20for%20my%20campaigns." target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size: 16px; padding: 14px 28px;">
+          Discuss Your Project on WhatsApp (+92 316 7417135)
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>WhatsApp Attribution Router · Open-Source Project under MIT License</p>
+      <p style="margin-top: 6px;">
+        Maintained by <a href="https://github.com/hamid-digitalmarketer" target="_blank" rel="noopener noreferrer" style="color: var(--accent-wa); text-decoration: none;">Muhammad Hamid</a> · WhatsApp: <a href="https://wa.me/923167417135" target="_blank" rel="noopener noreferrer" style="color: var(--text-primary); text-decoration: none;">+92 316 7417135</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../src/attribution-router.js"></script>
+  <script src="demo.js"></script>
+</body>
+</html>

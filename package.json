@@ -1,0 +1,24 @@
+{
+  "name": "whatsapp-attribution-router",
+  "version": "1.0.0",
+  "description": "JavaScript and Python toolkit for UTM-based WhatsApp lead attribution, Google Sheets logging, and GoHighLevel CRM integration.",
+  "main": "src/attribution-router.js",
+  "scripts": {
+    "test": "node --test tests/*.test.js"
+  },
+  "keywords": [
+    "whatsapp",
+    "utm-tracking",
+    "attribution",
+    "javascript",
+    "python",
+    "lead-generation",
+    "marketing-automation",
+    "gohighlevel",
+    "google-sheets",
+    "conversion-tracking",
+    "webhooks"
+  ],
+  "author": "Muhammad Hamid <https://github.com/hamid-digitalmarketer>",
+  "license": "MIT"
+}

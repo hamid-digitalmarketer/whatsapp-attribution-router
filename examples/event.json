@@ -1,0 +1,29 @@
+{
+  "event_name": "whatsapp_click",
+  "event_id": "evt_sample_98765",
+  "occurred_at": "2026-10-19T10:30:00Z",
+  "lead_reference": "lead_sample_123",
+  "session_id": "ses_sample_456",
+  "attribution": {
+    "model": "last_touch",
+    "utm_source": "google",
+    "utm_medium": "cpc",
+    "utm_campaign": "summer_leads_2026",
+    "utm_content": "ad_variant_a",
+    "utm_term": "attribution_software",
+    "gclid": "Cj0KCQjws_example123"
+  },
+  "page": {
+    "landing_page": "https://example.com/services/lead-tracking",
+    "referrer": "https://www.google.com/"
+  },
+  "destination": {
+    "type": "whatsapp",
+    "phone_number": "923167417135",
+    "button_id": "hero_primary_cta"
+  },
+  "custom_data": {
+    "page_category": "services",
+    "estimated_deal_size": 2500
+  }
+}

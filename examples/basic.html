@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Basic WhatsApp Attribution Router Integration</title>
+</head>
+<body>
+
+  <h1>Contact Us on WhatsApp</h1>
+  <p>Test visiting this page with: <code>?utm_source=google&utm_medium=cpc&utm_campaign=summer_promo</code></p>
+
+  <!-- Button with WhatsApp click-to-chat routing -->
+  <a href="#" data-wa-button id="contact-cta" style="display:inline-block; padding:12px 24px; background:#25D366; color:#fff; text-decoration:none; border-radius:6px; font-weight:bold;">
+    Chat on WhatsApp
+  </a>
+
+  <!-- WhatsApp Attribution Router Script -->
+  <script src="../src/attribution-router.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Initialize the attribution router
+      const router = new WhatsAppAttributionRouter({
+        phoneNumber: '923167417135',
+        apiEndpoint: '/api/v1/events', // Optional: log events to your Python backend
+        storageType: 'sessionStorage',
+        defaultMessage: 'Hi, I saw your website and would like more information.'
+      });
+
+      // Capture URL parameters and bind to matching buttons
+      router.init();
+    });
+  </script>
+</body>
+</html>
